@@ -1,0 +1,7 @@
+npm init
+npm install -S react react-dom redux react-redux redux-thunk redux-logger firebase semantic-ui-react classnames crypto express isomorphic-fetch json-loader prop-types redux-devtools-extension
+npm install -D webpack webpack-dev-server babel-core babel-loader babel-preset-react babel-preset-es2015 node-sass sass-loader css-loader style-loader
+
+npm install -D babel-plugin-react-html-attrs babel-plugin-transform-class-properties babel-plugin-transform-decorators-legacy copy-webpack-plugin extract-text-webpack-plugin rimraf serve svg-inline-loader
+ //    "react-redux-firebase": "^1.5.0-beta",
+
