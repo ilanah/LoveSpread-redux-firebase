@@ -11,16 +11,16 @@ export function getContacts() {
       dispatch(getContactsRequestedAction());
       console.log("auth'" + JSON.stringify(auth));
 
-      return database.ref('contacts').once('value', snap => 
+      return database.ref('contacts').limitToFirst(24).orderByChild('is_favorite').on('value', snap => 
                                           {
                                             const contacts = snap.val();
                                             dispatch(getContactsFulfilledAction(contacts))
                                           })
-                                    .catch((error) => 
-                                     {
-                                        console.log(error);
-                                        dispatch(getContactsRejectedAction());
-                                     });
+                                    // .catch((error) => 
+                                    //  {
+                                    //     console.log(error);
+                                    //     dispatch(getContactsRejectedAction());
+                                    //  });
   }
 }
 
