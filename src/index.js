@@ -4,11 +4,10 @@ import { Provider } from 'react-redux';
 import store from './store';
 import "./stylesheets/main.scss";
 import AppContainer from './containers/app_container';
-import ContactsContainer from './components/Contacts/Contacts.container';
 
 const main = (
   <Provider store={store}>
-    <ContactsContainer />
+    <AppContainer />
   </Provider>
 );
 // const main=(

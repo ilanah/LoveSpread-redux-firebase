@@ -1,0 +1,148 @@
+/*@import url('https://fonts.googleapis.com/css?family=Griffy|Yanone+Kaffeesatz:400,700');*/
+@import url('http://fonts.googleapis.com/css?family=Unkempt:400,700');
+@import url('http://serve.fontsproject.com/css?family=Felix007:400,700');
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300");
+@import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+/* ---------------------------------------
+   all app imports are at the bottom !!!
+   --------------------------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  // font-size: 1vw;
+  font-family: 'Open Sans', sans-serif;
+}
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.flexy {
+//   /* To make the transition work nicely.  (Transitions to/from
+//   "width:auto" are buggy in Gecko and Webkit, at least.
+//   See http://bugzil.la/731886 for more info.) */
+  transition: all 1s ease-out;
+
+  display:flex;
+  align-self:auto;
+  flex-direction:row;
+  flex-wrap:nowrap;
+}
+.row {
+   flex-direction:row;
+}
+.column {
+   flex-direction:column;
+}
+
+.stretch {
+  align-items:stretch;
+  align-content:stretch;
+}
+.flexy.center {
+  align-items:center;
+  align-content:center;
+  align-self:center;
+}
+.row.stretch {
+  height: 100%;
+}
+.column.stretch {
+  max-height: 100%;
+}
+
+.child {
+  border: solid 2px #eeeeee;
+  padding: 1vw 2vw;
+  min-height: 2vw;
+  position: relative;
+  margin-bottom: -0.5vw;
+  flex-grow: auto;
+}
+.child::after {
+  content: "v";
+  color: silver;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: .75vw;
+  line-height: 2vw;
+  font-weight: normal;
+  position: absolute;
+  top: 0;
+  right: .5vw;
+  transition: all 1s ease-out;
+}
+.child.expanded {
+  flex: 3;
+}
+.child.expanded::after {
+  content: " ";
+  transition: all 1s ease-out;
+}
+.stretch .center {
+  margin: auto;
+}
+
+/*-------------------------*/
+// #aside {
+//   .flex-grow(0);
+//   .flex-shrink(0);
+//   .flex-basis(8vw);
+//   .order(2);
+// }
+// #main {
+//   .flex-grow(4);
+//   .flex-shrink(50);
+//   .order(1);
+//   font-size: 4vw;
+// }
+/*-------------------------*/
+.wrapper {
+  display: flex;
+  height: 100%;
+}
+
+
+/*/////////////////////////////////////////////*/
+.hasEnergy {
+  box-shadow: 4px 4px 10px rgba(98, 97, 97, 0.09), 0px 0px 55px #ffe302;
+  background-image: radial-gradient(ellipse at center, #ffcc02 0%, #ffe302 34%, #ffe206 38%, #ffe513 43%, #ffe415 45%, rgba(255, 228, 19, 0.74) 53%, rgba(255, 226, 6, 0.6) 60%, rgba(255, 227, 2, 0.5) 65%, rgba(255, 227, 2, 0.17) 100%);
+  filter: none !important;
+}
+
+/*@import "menu.less";
+@import "my-status.less";
+@import "draggableButton.less";
+@import "contacts.less";
+@import "accounts-ui.less";*/
+
+// .main{
+// 	min-height: 100%;		
+// 	display:flex;
+// 	justify-content: center;
+// }
+// .page {
+// 	margin-top: 2rem;	
+// }
+
+// body{
+//     display:flex;
+//     justify-content:center;
+//     align-items: center;
+//     /*background: mintcream;*/
+// }
+// *{
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+// }
+/*--------------------*/
+// .app{
+//     display:flex;
+//     flex-direction:column;
+// }

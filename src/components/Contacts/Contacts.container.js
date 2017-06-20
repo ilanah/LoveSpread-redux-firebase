@@ -6,7 +6,8 @@ import Contacts from './Contacts.view';
 
 function mapStateToProps(state) {
   return {
-    contacts: state.contacts
+    contacts: state.contactsReducer.contacts,
+    msg: state.contactsReducer.msg
   };
 }
 

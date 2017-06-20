@@ -1,21 +1,23 @@
-// import * as actions from './Contacts.actions'
+import * as actions from './Contacts.actions'
 
-export default function contacts(contacts = [], action) {
+export default function contactsReducer(contactsReducer={contacts : [],msg:"Charging the energy..."}, action) {
   switch (action.type) {
-    case 'GET_CONTACTS_FULFILLED':
-        return action.contacts
-
-    // case 'RANDOM_USER_FETCHED':
-    //   return {
-	// 	  user	:	JSON.stringify(action.payload)
-	//   }
-
-	// case 'FETCH_USER_ERROR':
-    //   return {
-	// 	  user	:	action.payload.message
-	//   }
-    
+    case actions.GET_CONTACTS_FULFILLED:
+        return {
+            contacts: action.contacts,
+            msg:"Loaded "+ Object.keys(action.contacts).length + " contacts" 
+        }
+    case actions.GET_CONTACTS_REQUESTED:
+        return {
+            contacts: contactsReducer.contacts,
+            msg: "Loading contacts..."
+        }
+    case actions.GET_CONTACTS_REJECTED:
+        return {
+            contacts: contactsReducer.contacts,
+            msg: "Failed to load contacts"
+        }
     default:
-      return contacts
+      return contactsReducer
   }
 }

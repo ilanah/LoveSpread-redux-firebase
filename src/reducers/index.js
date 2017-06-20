@@ -7,7 +7,7 @@ import { combineReducers } from 'redux'
 
 // import auth from '../components/Auth/Auth.reducer'
 // import current_user from '../components/CurrentUser/CurrentUser.reducer'
-import contacts from '../components/Contacts/Contacts.reducer'
+import contactsReducer from '../components/Contacts/Contacts.reducer'
 // import active_users from '../components/ActiveUsers/ActiveUsers.reducer'
 // import connections from '../components/Connections/Connections.reducer'
 
@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
   
   // auth,
   // current_user,
-  contacts
+  contactsReducer
   // active_users, 
   // connections
 })
