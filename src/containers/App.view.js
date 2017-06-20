@@ -11,7 +11,7 @@ import ContactsContainer from '../components/Contacts/Contacts.container';
 
 import { Sidebar} from 'semantic-ui-react'
 
-// import css from './App.css'
+import css from './App.scss'
 
 export default class App extends Component {
 	constructor(props) {
@@ -31,9 +31,20 @@ export default class App extends Component {
 		// 	active_users
 		//   } = this.props
 		return (
-			<div className="app">
+			<div className={`${css.app}`}>
 		          {/*<PageHeader currentUser={this.state.currentUser} loggedIn={true} toggleMenu={this.toggleMenu}/>*/}
           
+				  <div className={`ui fixed text ${css.fixed} ${css.header}`}>
+					<div className="ui large secondary  menu">
+						<a className="toc item">
+						<i className="sidebar medium icon"></i>
+						</a>
+						<div className="right item">
+						<a className="ui icon "><i className="circular user link icon black"></i></a>
+						</div>
+					</div>
+				  </div>
+
 		          <Sidebar.Pushable>
 
 		            {/*<LeftMenu contacts={contacts} services={{}} loggedIn={true} menuVisible={false}/>*/}
@@ -45,17 +56,7 @@ export default class App extends Component {
 		                <Page contacts={contacts} currentUser={{}} loggedIn={true} menuVisible={false} />
 
 		              </Segment>*/}
-                        <div className="ui fixed text ">
-                        <div className="ui large secondary  menu">
-                            <a className="toc item">
-                            <i className="sidebar medium icon"></i>
-                            </a>
-                            <div className="right item">
-                            <a className="ui icon "><i className="circular user link icon black"></i></a>
-                            </div>
-                        </div>
-                        </div>
-                        <div className="ui vertical segment center aligned">
+                        <div className="ui vertical segment center aligned" style={{marginTop: 3.5 + 'em'}}>
                         {
                             //#if loggedin
                         }
@@ -66,14 +67,15 @@ export default class App extends Component {
                                 //LOGIN BUTTONS
                         }                        
                         </div>
-                        <div className="ui vertical footer segment">
-                        <div className="ui container">
-                            Footer
-                        </div>
-                        </div>
                       
 		            </Sidebar.Pusher>
 		          </Sidebar.Pushable>
+
+				<div className={`ui vertical footer segment ${css.fixed} ${css.footer}`}>
+					<div className="ui container">
+						Footer
+					</div>
+				</div>
 				
 			{/*
 				<Counter

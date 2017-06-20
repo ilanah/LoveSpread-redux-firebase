@@ -12,23 +12,6 @@ class ContactCard extends Component {
 
   render() {
     const { id,contact } = this.props
-    // const color=selectedColor==null?'red':selectedColor
-    /*
-    <div className="column">
-      <div className="ui fluid card" id={`div_${id}`}>
-        <div className="image">
-          <Image src={`${contact.photo}`}/>
-        </div>
-        <a className="ui right corner label">
-          <Icon className={`${contact.className}`}/>
-        </a>
-        <div className="content">
-          <a className="ui small header ellipsis">
-            {contact.displayName} 
-          </a>
-        </div>
-      </div>
-    </div>*/
     return (
     <Card  id={`div_${id}`}>
       <Image fluid src={`${contact.photo}`}/>
