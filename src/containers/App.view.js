@@ -34,7 +34,7 @@ export default class App extends Component {
 			<div className={`${css.app}`}>
 		          {/*<PageHeader currentUser={this.state.currentUser} loggedIn={true} toggleMenu={this.toggleMenu}/>*/}
           
-				  <div className={`ui fixed text ${css.fixed} ${css.header}`}>
+				  <div className={`ui fixed text ${css.fixed} ${css.header}`} style={{zIndex: 2147483646}}>
 					<div className="ui large secondary  menu">
 						<a className="toc item">
 						<i className="sidebar medium icon"></i>
@@ -49,7 +49,7 @@ export default class App extends Component {
 
 		            {/*<LeftMenu contacts={contacts} services={{}} loggedIn={true} menuVisible={false}/>*/}
 
-		            <Sidebar.Pusher>
+		            <Sidebar.Pusher style={{zIndex: 2147483647, border: '2px solid #ececec'}}>
 		              {
                       /*<Segment basic>
 
