@@ -71,7 +71,7 @@ export default class App extends Component {
 		            </Sidebar.Pusher>
 		          </Sidebar.Pushable>
 
-				<div className={`ui vertical footer segment ${css.fixed} ${css.footer}`}>
+				<div className={`ui ${css.fixed} ${css.footer}`}>
 					<div className="ui container">
 						Footer
 					</div>
