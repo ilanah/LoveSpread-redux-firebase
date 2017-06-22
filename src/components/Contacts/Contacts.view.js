@@ -16,37 +16,21 @@ export default class Contacts extends Component {
     const { contacts, msg } = this.props;
 
     // Build Contacts list if contacts exist and are loaded
-    const contactsList = //!isLoaded(contacts) ? 'Loading' : contacts.length==0 ? [] :
+    const contactsList = 
         Object.keys(contacts).map(
             (key, id) => (
                 <ContactCard key={key} id={id} contact={contacts[key]}/>
-                // <div key={key} id={id}>{contacts[key].displayName}</div>
             )
           )
 
     return (
-        // <div className="ui three column grid padded">
-        // <Grid columns={3}>
-        // <Grid.Row>
-        // </Grid.Row>
-        // <Grid.Row>
-        // </Grid.Row>
-        // </Grid>
-        <Container fluid>
+         <Container fluid>
           <Header className="row" as="h5" dividing>{msg}</Header>
           <Card.Group itemsPerRow={3}>
             {contactsList}
           </Card.Group>
         </Container>
-        // {
-          /**
-            <Input type="text" ref="newContact" />
-            <Button onClick={this.handleAdd}>
-            Add
-            </Button>
-           */
-        // }
-    )
+     )
   }
 }
 ////////////////////////////////////////
