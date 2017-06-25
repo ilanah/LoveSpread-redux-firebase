@@ -1,0 +1,16 @@
+.fixed {
+    position: fixed !important;
+    left: 0;
+    width: 100%;
+    z-index: 9999999999;
+    background: #fff !important;
+}
+.fixed.header {
+    top: 0;
+    box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.27) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.13) !important;
+    z-index: 2147483646 !important;
+}
+.fixed.footer {
+    bottom: 0;
+}

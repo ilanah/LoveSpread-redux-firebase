@@ -34,7 +34,7 @@ export default class App extends Component {
 			<div className={`${css.app}`}>
 		          {/*<PageHeader currentUser={this.state.currentUser} loggedIn={true} toggleMenu={this.toggleMenu}/>*/}
           
-				  <div className={`ui fixed text ${css.fixed} ${css.header}`} style={{zIndex: 2147483646}}>
+				  <div className={`ui fixed text ${css.fixed} ${css.header}`} /*style={{zIndex: 2147483646}}*/>
 					<div className="ui large secondary  menu">
 						<a className="toc item">
 						<i className="sidebar medium icon"></i>
