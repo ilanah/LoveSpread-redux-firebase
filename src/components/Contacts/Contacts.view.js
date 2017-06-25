@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import css from './Contacts.css'
+import css from './Contacts.scss'
 import cn from 'classnames'
 import {Container, Header, Card} from 'semantic-ui-react'
 import ContactCard from '../Contact/ContactCard.view';

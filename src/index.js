@@ -6,13 +6,14 @@ import {BrowserRouter, HashRouter,Route,Links,Switch} from 'react-router-dom';
 import store from './store';
 import AppContainer from './containers/app_container';
 import Welcome from './components/Welcome/Welcome.view';
+import AuthContainer from './components/Auth/Auth.container';
 
 const main = (
   <Provider store={store}>
         <HashRouter>
             <Switch>
               <Route exact path="/" component={Welcome}/>
-              <Route path="/login" /*component={Home}*/><div>Login</div></Route>
+              <Route path="/login" component={AuthContainer}/>
               <Route path="/user/:id" component={AppContainer}/>
             </Switch>
         </HashRouter>

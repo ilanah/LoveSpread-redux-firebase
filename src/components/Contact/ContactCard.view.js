@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Card,Image,Icon, Label} from 'semantic-ui-react'
 import cn from 'classnames'
 
-import css from './ContactCard.css'
+import css from './ContactCard.scss'
 
 class ContactCard extends Component {
   constructor(props) {
