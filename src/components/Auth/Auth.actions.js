@@ -1,4 +1,4 @@
-import {auth} from '../../store';
+import {auth, database} from '../../store';
 	// AUTH ACTIONS
 export const	ATTEMPTING_LOGIN_ACTION= "ATTEMPTING_LOGIN"
 export const	LOGIN_USER_ACTION= "LOGIN_USER"
@@ -32,33 +32,29 @@ export const    FAILED_LOGIN = "FAILED_LOGIN"
 // 			});
 // 		}
 // }
-export const	attemptLogin=()=>
+export const	attemptLogin=(email,pass)=>
 {
 	console.log('====================================');
 	console.log("in attemptLogin ");
 	console.log('====================================');
-	dispatch => {
-		dispatch({type:ATTEMPTING_LOGIN_ACTION});
-		
-		return ()=>{
-			// debugger;
-			// if (!auth.pass)
-			// {
-			// 	debugger;
-			// }
-			// else
-			// {
-				auth.signInWithEmailAndPassword(auth.email||"", auth.pass||"").catch(
-					function(error) {
-					// Handle Errors here.
-					var errorCode = error.code;
-					var errorMessage = error.message;
-					console.log("Failed to login"+ errorCode +" "+errorMessage);
-					//dispatch({type:LOGOUT_ACTION});
-					// ...
-				});
-			// }
-		}
+
+	return (dispatch,getState)=>{
+		dispatch({type:ATTEMPTING_LOGIN_ACTION, email:email, pass:pass });
+		auth.signInWithEmailAndPassword(email||"", pass||"")
+		.then( promise => {
+			dispatch({type:LOGIN_USER_ACTION, uid:promise.uid});
+		})
+		.catch( error => {
+				// Handle Errors here.
+				var errorCode = error.code;
+				var errorMessage = error.message;
+				console.log("Failed to login: errorCode-"+ errorCode +" errorMessage-"+errorMessage);
+				dispatch({type:LOGOUT_ACTION});
+				// ...
+			}
+		);
+
+	}
 		// auth.authWithOAuthPopup("github", function(error, authData) {
 		// 	if (error) {
 		// 		// dispatch({type:actions.DISPLAY_ERROR,error:"Login failed! "+error});
@@ -67,8 +63,6 @@ export const	attemptLogin=()=>
 		// 		// no need to do anything here, startListeningToAuth have already made sure that we update on changes
 		// 	}
 		// });
-		
-	}
 }
 export const	logoutUser=()=>
 {

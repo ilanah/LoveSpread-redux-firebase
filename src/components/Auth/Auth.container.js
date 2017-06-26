@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+
 import {auth} from '../../store';
 
 import * as actions from "./Auth.actions";
@@ -6,18 +7,17 @@ import * as actions from "./Auth.actions";
 import AuthPanel from './Auth.view';
 
 function mapStateToProps(state) {
-    // const auth = state.firebase.get("auth");
+    // debugger;
+    // const fb_auth = state.firebase.get("auth");
 	// return {
-    //     auth:auth,
-    //     email:auth!=null?auth.email:"",
-    //     pass:auth!=null?auth.pass:""
+    //     fb_auth:fb_auth,
     // };
-    return state;
+    return state.authReducer;
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-      attemptLogin: ()=> dispatch(actions.attemptLogin()),
+      attemptLogin: (email,pass)=> dispatch(actions.attemptLogin(email,pass)),
       logoutUser: ()=> dispatch(actions.logoutUser()),
       startListeningToAuth: ()=> dispatch(actions.startListeningToAuth()),
       changeEmail: (evt)=>dispatch(actions.changeEmail(evt)),

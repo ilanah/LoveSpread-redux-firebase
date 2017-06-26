@@ -14,15 +14,15 @@ export default class AuthPanel extends Component
   }
 
   render() {
-		const auth = this.props.auth;
+		// const auth_details = this.props.auth;
         let {email,pass}=this.props;
-		switch(auth!=null?auth.currently:"")
+		switch(this.props.currently)
         {
 			case actions.LOGGED_IN_STATE: 
                 return (
                     <div className="authpanel">
-                        <Label>Logged in as {auth.username}.</Label>
-                        {' '}<Button onClick={this.props.logoutUser} content="Log out"/>
+                        <Label>Logged in as {this.props.username}.</Label>
+                        {' '}<Button onClick={this.props.logoutUser()} content="Log out"/>
                     </div>
                 );
 			case actions.AWAITING_AUTH_RESPONSE_STATE: 
@@ -37,17 +37,17 @@ export default class AuthPanel extends Component
                         <Form>
                             <Form.Field>
                             <label>Email</label>
-                            <Input id="email" placeholder='name@server.com' onChange={(evt)=> this.props.changeEmail(evt)}>{this.props.email}</Input>
+                            <Input id="email" placeholder='name@server.com' onChange={(evt)=> this.props.changeEmail(evt)} value={email}/>
                             </Form.Field>
                             <Form.Field>
                             <label>Password</label>
-                            <Input id="pass" type="password" placeholder='password' onChange={(evt)=> this.props.changePass(evt)}></Input>
+                            <Input id="pass" type="password" placeholder='password' onChange={(evt)=> this.props.changePass(evt)} value={pass}/>
                             </Form.Field>
                             <Form.Field>
                             {/*<Checkbox label='I agree to the Terms and Conditions' />*/}
                             </Form.Field>
                             {/*<Button type='submit'>Submit</Button>*/}
-                            <Button type='button' onClick={()=> this.props.attemptLogin()} content="Log in"/>
+                            <Button type='button' onClick={()=> this.props.attemptLogin(email,pass)} content="Log in"/>
                         </Form>     
                         {
                             /*
