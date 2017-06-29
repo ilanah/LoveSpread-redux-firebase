@@ -11,50 +11,19 @@ export const	ANONYMOUS_STATE= "ANONYMOUS"
 export const	AWAITING_AUTH_RESPONSE_STATE= "AWAITING_AUTH_RESPONSE"
 export const	LOGGED_IN_STATE= "LOGGED_IN"
 export const    FAILED_LOGIN = "FAILED_LOGIN"
+// export const decrement = ()=> ({ type: DECREMENT })
 
-	// called at app start
-// export const	startListeningToAuth= ()=>
-// {
-// 		return (dispatch,getState) => {
-// 			auth.onAuth(function(authData){
-// 				debugger;
-// 				if (authData){ 
-// 					dispatch({
-// 						type: LOGIN_USER_ACTION,
-// 						uid: authData.uid,
-// 						username: authData.github.displayName || authData.github.username
-// 					});
-// 				} else {
-// 					if (getState().auth.currently !== actions.ANONYMOUS_STATE){ // log out if not already logged out
-// 						dispatch({type:LOGOUT_ACTION});
-// 					}
-// 				}
-// 			});
-// 		}
-// }
-export const	attemptLogin=(email,pass)=>
-{
-	console.log('====================================');
-	console.log("in attemptLogin ");
-	console.log('====================================');
+export const attemptLogin = (email,pass)=> (
+	(dispatch) => {
 
-	return (dispatch,getState)=>{
-		dispatch({type:ATTEMPTING_LOGIN_ACTION, email:email, pass:pass });
-		auth.signInWithEmailAndPassword(email||"", pass||"")
-		.then( promise => {
-			dispatch({type:LOGIN_USER_ACTION, uid:promise.uid});
-		})
-		.catch( error => {
-				// Handle Errors here.
-				var errorCode = error.code;
-				var errorMessage = error.message;
-				console.log("Failed to login: errorCode-"+ errorCode +" errorMessage-"+errorMessage);
-				dispatch({type:LOGOUT_ACTION});
-				// ...
-			}
-		);
+		dispatch({type:ATTEMPTING_LOGIN_ACTION, email:email, pass:pass })
 
-	}
+		auth.signInWithEmailAndPassword(email||"", pass||"") //fetch(`https://randomuser.me/api/`).then((res) => res.json())																 
+		.then((promise) => dispatch(loggedIn(promise)))
+		.catch((err) => dispatch(failedLogin(err)))
+	  }
+	)
+
 		// auth.authWithOAuthPopup("github", function(error, authData) {
 		// 	if (error) {
 		// 		// dispatch({type:actions.DISPLAY_ERROR,error:"Login failed! "+error});
@@ -63,25 +32,26 @@ export const	attemptLogin=(email,pass)=>
 		// 		// no need to do anything here, startListeningToAuth have already made sure that we update on changes
 		// 	}
 		// });
-}
-export const	logoutUser=()=>
+
+const failedLogin = (err)=>
 {
-	return (dispatch,getState) => {
-		dispatch({type:LOGOUT_ACTION}); // don't really need to do this, but nice to get immediate feedback
-		auth.unauth();
-	}
+	return {type:FAILED_LOGIN, payload:err};
+}
+const loggedIn = (promise)=>
+{
+	return {type:LOGIN_USER_ACTION, uid:promise.uid, payload:promise}
+}
+
+export const logoutUser = ()=> {
+		// debugger;
+		auth.signOut();
+		return {type:LOGOUT_ACTION}; // don't really need to do this, but nice to get immediate feedback
 }
 export const changeEmail=(evt)=>
 {
-	return (dispatch,getState) => {
-		dispatch({type:CHANGE_EMAIL,email:evt.target.value});
-	}
-	
+	return {type:CHANGE_EMAIL,email:evt.target.value};	
 }
 export const changePass=(evt)=>
 {
-	return (dispatch,getState) => {
-		dispatch({type:CHANGE_PASS,pass:evt.target.value});
-	}
-	
+	return{type:CHANGE_PASS,pass:evt.target.value};	
 }

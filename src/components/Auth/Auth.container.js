@@ -19,7 +19,7 @@ function mapDispatchToProps(dispatch) {
   return {
       attemptLogin: (email,pass)=> dispatch(actions.attemptLogin(email,pass)),
       logoutUser: ()=> dispatch(actions.logoutUser()),
-      startListeningToAuth: ()=> dispatch(actions.startListeningToAuth()),
+    //   startListeningToAuth: ()=> dispatch(actions.startListeningToAuth()),
       changeEmail: (evt)=>dispatch(actions.changeEmail(evt)),
       changePass: (evt)=>dispatch(actions.changePass(evt)),
 //    onGetContacts: () => dispatch(getContacts())

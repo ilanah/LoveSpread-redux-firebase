@@ -8,7 +8,7 @@ import React, { Component, PropTypes } from 'react'
 // import Page from '../../components/page';
 // import PageHeader from '../../components/page_header';
 import ContactsContainer from '../components/Contacts/Contacts.container';
-
+import UserMenu from '../components/UserMenu/UserMenu.view';
 import { Sidebar} from 'semantic-ui-react'
 
 import css from './App.scss'
@@ -30,10 +30,10 @@ export default class App extends Component {
 		// 	connections,
 		// 	active_users
 		//   } = this.props
-		return (
+		return (		
 			<div className={`${css.app}`}>
 		          {/*<PageHeader currentUser={this.state.currentUser} loggedIn={true} toggleMenu={this.toggleMenu}/>*/}
-          
+				  
 				  <div className={`ui fixed text ${css.fixed} ${css.header}`} /*style={{zIndex: 2147483646}}*/>
 					<div className="ui large secondary  menu">
 						<a className="toc item">
@@ -44,6 +44,8 @@ export default class App extends Component {
 						</div>
 					</div>
 				  </div>
+
+				  <UserMenu/>
 
 		          <Sidebar.Pushable>
 
@@ -59,9 +61,30 @@ export default class App extends Component {
                         <div className="ui vertical segment center aligned" style={{marginTop: 3.5 + 'em'}}>
                         {
                             //#if loggedin
+						    // <div class="flex row ">
                         }
-                                main
-                                <ContactsContainer />
+							<div id="main" class="flex column  center" >
+								{/*
+								<div id="myStatusTextDiv" class="talkbubble">
+									<label id="myStatusText" for="aside">My Energy Level</label>
+								</div>
+								*/}
+								<div class="flex row child fixed">
+								
+									<div class="myMainButton center flex">
+										<div class="btn ui-draggable hasEnergy ui-widget-content">
+Good 
+Energy</div>
+									</div>
+								</div>
+									{/*
+								<div id="contacts" class="flex row child  expanded center">
+								<div id="scrollableContacts" class="flex row"></div>
+								</div>
+									*/}
+		                        <ContactsContainer />
+							</div>
+							{/*</div>*/}
                         {
                             //else
                                 //LOGIN BUTTONS

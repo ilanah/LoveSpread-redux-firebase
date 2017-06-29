@@ -1,0 +1,31 @@
+/*@import url('https://fonts.googleapis.com/css?family=Griffy|Yanone+Kaffeesatz:400,700');*/
+@import url('http://fonts.googleapis.com/css?family=Unkempt:400,700');
+@import url('http://serve.fontsproject.com/css?family=Felix007:400,700');
+// @import url("http://fonts.googleapis.com/css?family=Open+Sans:300");
+@import url("http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+/* ---------------------------------------
+   all app imports are at the bottom !!!
+   --------------------------------------- */
+$base-size:8vw;
+$transition:all 1s ease-out;
+
+.red {
+    color: coral;
+    background: hsl(2, 100%, 77%);
+}
+ .orange {
+    color: orange;
+    background: hsl(39, 89%, 65%);
+ }
+ .yellow {
+    color: yellowgreen;
+    background: hsl(80, 61%, 60%);
+ }
+ .green {
+    color: #05C4B0;
+    background: hsl(174, 76%, 58%);
+ }
+ .blue {
+    color: #008FFF;
+    background: hsl(206, 94%, 64%);
+ }
