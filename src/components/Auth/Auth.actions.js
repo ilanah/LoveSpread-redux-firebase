@@ -1,29 +1,51 @@
 import {auth, database} from '../../store';
+import fetch from 'isomorphic-fetch';
+import { push } from 'react-router-redux';
+
 	// AUTH ACTIONS
-export const	ATTEMPTING_LOGIN_ACTION= "ATTEMPTING_LOGIN"
 export const	LOGIN_USER_ACTION= "LOGIN_USER"
 export const	LOGOUT_ACTION= "LOGOUT"
 export const	CHANGE_EMAIL= "CHANGE_EMAIL"
 export const	CHANGE_PASS= "CHANGE_PASS"
 
 	// AUTH STATES
+export const	ATTEMPTING_LOGIN_STATE= "ATTEMPTING_LOGIN"
 export const	ANONYMOUS_STATE= "ANONYMOUS"
 export const	AWAITING_AUTH_RESPONSE_STATE= "AWAITING_AUTH_RESPONSE"
 export const	LOGGED_IN_STATE= "LOGGED_IN"
 export const    FAILED_LOGIN = "FAILED_LOGIN"
+
+/*
+ * action creators
+ */
 // export const decrement = ()=> ({ type: DECREMENT })
+export function requestLogin (email,pass) {
+  return {
+    type: AWAITING_AUTH_RESPONSE_STATE,
+    email,
+	pass
+  }
+}
+// Meet our first thunk action creator!
+// Though its insides are different, you would use it just like any other action creator:
+// store.dispatch(attemptLogin('email','pass'))
 
-export const attemptLogin = (email,pass)=> (
-	(dispatch) => {
+export function attemptLogin (email,pass) {
+  	// Thunk middleware knows how to handle functions. 
+  	// It passes the dispatch method as an argument to the function, thus making it able to dispatch actions itself.
+  	return function (dispatch) { 
 
-		dispatch({type:ATTEMPTING_LOGIN_ACTION, email:email, pass:pass })
+		dispatch(requestLogin(email,pass));
 
-		auth.signInWithEmailAndPassword(email||"", pass||"") //fetch(`https://randomuser.me/api/`).then((res) => res.json())																 
-		.then((promise) => dispatch(loggedIn(promise)))
-		.catch((err) => dispatch(failedLogin(err)))
-	  }
-	)
-
+		return auth.signInWithEmailAndPassword(email||"", pass||"") //fetch(`https://randomuser.me/api/`).then((res) => res.json())																 
+		.then(
+			reponse => reponse,//.json(),
+			error => dispatch(failedLogin(error))
+		)
+		.then( json => dispatch(receiveLogin(json)))
+		// .then( ()=> ))
+	}
+}
 		// auth.authWithOAuthPopup("github", function(error, authData) {
 		// 	if (error) {
 		// 		// dispatch({type:actions.DISPLAY_ERROR,error:"Login failed! "+error});
@@ -32,18 +54,29 @@ export const attemptLogin = (email,pass)=> (
 		// 		// no need to do anything here, startListeningToAuth have already made sure that we update on changes
 		// 	}
 		// });
-
-const failedLogin = (err)=>
+export function receiveLogin (json) {
+  	// return function (dispatch) { 
+	// 	dispatch(push('/user/:1'));
+		localStorage.setItem("uid",json.uid);
+		return {
+			type: LOGIN_USER_ACTION,
+			currentUser : json,//.children.map(child => child.data),
+			receivedAt: Date.now(),
+			pass: ""
+		}
+  	// }
+}
+export const failedLogin = (err)=>
 {
 	return {type:FAILED_LOGIN, payload:err};
 }
-const loggedIn = (promise)=>
+export const loggedIn = (promise)=>
 {
 	return {type:LOGIN_USER_ACTION, uid:promise.uid, payload:promise}
 }
 
 export const logoutUser = ()=> {
-		// debugger;
+		localStorage.removeItem("uid");
 		auth.signOut();
 		return {type:LOGOUT_ACTION}; // don't really need to do this, but nice to get immediate feedback
 }

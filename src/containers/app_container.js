@@ -5,8 +5,10 @@ import { connect } from 'react-redux';
 import App from './App.view';
 
 function mapStateToProps(state) {
+    const isLoggedIn = state.authReducer.currentUser && state.authReducer.currentUser.uid ? true:false;
   return {
     // contacts: state.contacts
+    isLoggedIn,
     state
   };
 }

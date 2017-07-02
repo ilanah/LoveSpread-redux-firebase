@@ -9,7 +9,9 @@ import React, { Component, PropTypes } from 'react'
 // import PageHeader from '../../components/page_header';
 import ContactsContainer from '../components/Contacts/Contacts.container';
 import UserMenu from '../components/UserMenu/UserMenu.view';
+import MainButton from '../components/MainButton/MainButton.view';
 import { Sidebar} from 'semantic-ui-react'
+import Welcome from '../components/Welcome/Welcome.view';
 
 import css from './App.scss'
 
@@ -22,7 +24,10 @@ export default class App extends Component {
         this.setState({ menuVisible: !this.state.menuVisible })
 */ 
 	}
+	getContent()
+	{
 
+	}
 	render() {
 		// const { 
 		// 	contacts,
@@ -47,48 +52,25 @@ export default class App extends Component {
 
 				  <UserMenu/>
 
-		          <Sidebar.Pushable>
+		          <Sidebar.Pushable style={{marginBottom: 2 + 'em'}}>
 
 		            {/*<LeftMenu contacts={contacts} services={{}} loggedIn={true} menuVisible={false}/>*/}
 
-		            <Sidebar.Pusher style={{zIndex: 2147483647, border: '2px solid #ececec'}}>
-		              {
-                      /*<Segment basic>
-
-		                <Page contacts={contacts} currentUser={{}} loggedIn={true} menuVisible={false} />
-
-		              </Segment>*/}
-                        <div className="ui vertical segment center aligned" style={{marginTop: 3.5 + 'em'}}>
-                        {
-                            //#if loggedin
-						    // <div class="flex row ">
-                        }
-							<div id="main" class="flex column  center" >
-								{/*
-								<div id="myStatusTextDiv" class="talkbubble">
-									<label id="myStatusText" for="aside">My Energy Level</label>
-								</div>
-								*/}
-								<div class="flex row child fixed">
-								
-									<div class="myMainButton center flex">
-										<div class="btn ui-draggable hasEnergy ui-widget-content">
-Good 
-Energy</div>
+		            <Sidebar.Pusher style={{zIndex: 2147483647/*, border: '2px solid #ececec'*/}}>
+		                <div className="ui vertical segment center aligned" style={{marginTop: 3.5 + 'em'}}>
+						{
+							this.props.isLoggedIn ?
+								<div id="main" class="flex column  center" >
+									<div class="flex row child fixed">
+										<MainButton/>								
 									</div>
+									<ContactsContainer />
 								</div>
-									{/*
-								<div id="contacts" class="flex row child  expanded center">
-								<div id="scrollableContacts" class="flex row"></div>
-								</div>
-									*/}
-		                        <ContactsContainer />
-							</div>
-							{/*</div>*/}
-                        {
-                            //else
-                                //LOGIN BUTTONS
-                        }                        
+							:
+								//LOGIN BUTTONS
+								<Welcome/>
+							
+						}
                         </div>
                       
 		            </Sidebar.Pusher>

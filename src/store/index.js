@@ -15,7 +15,7 @@ const logger = createLogger();
 const middleware = composeWithDevTools(applyMiddleware(thunk, logger))
 
 const store = createStore(rootReducer,
-  {},
+  {authReducer : { currentUser: {uid: localStorage.getItem("uid")}}},
   middleware
 );
 

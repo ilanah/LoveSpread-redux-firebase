@@ -10,6 +10,7 @@ import authReducer from '../components/Auth/Auth.reducer'
 import contactsReducer from '../components/Contacts/Contacts.reducer'
 // import active_users from '../components/ActiveUsers/ActiveUsers.reducer'
 // import connections from '../components/Connections/Connections.reducer'
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 //this is the app state
 const rootReducer = combineReducers({
@@ -20,9 +21,10 @@ const rootReducer = combineReducers({
   
   authReducer,
   // current_user,
-  contactsReducer
+  contactsReducer,
   // active_users, 
   // connections
+  routing: routerReducer
 })
 
 export default rootReducer

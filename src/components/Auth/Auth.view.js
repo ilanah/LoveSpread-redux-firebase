@@ -20,20 +20,20 @@ export default class AuthPanel extends Component
         {
 			case actions.LOGGED_IN_STATE: 
                 return (
-                    <div className="authpanel">
+                    <div className="authpanel ui container segment ">
                         <Label>Logged in as {this.props.username}.</Label>
                         {' '}<Button onClick={this.props.logoutUser()} content="Log out"/>
                     </div>
                 );
 			case actions.AWAITING_AUTH_RESPONSE_STATE: 
                 return (
-                    <div className="authpanel">
+                    <div className="authpanel ui container segment ">
                         <Button loading={true} disabled content="authenticating..."/>
                     </div>
                 );
 			default: 
                 return (
-                    <div className="authpanel">
+                    <div className="authpanel ui container segment ">
                         <Form>
                             <Form.Field>
                             <label>Email</label>
@@ -47,7 +47,7 @@ export default class AuthPanel extends Component
                             {/*<Checkbox label='I agree to the Terms and Conditions' />*/}
                             </Form.Field>
                             {/*<Button type='submit'>Submit</Button>*/}
-                            <Button type='button' onClick={()=> this.props.attemptLogin(email,pass)} content="Log in"/>
+                            <Button type='button' onClick={()=> this.props.attemptLogin(email,pass)} content="Log in" href="/#/"/>
                         </Form>     
                         {
                             /*

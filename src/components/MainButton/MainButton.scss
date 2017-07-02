@@ -1,0 +1,55 @@
+//-----------------------------------------
+.myMainButton {
+    background: rgba(245, 217, 217, 0);
+    z-index: 99999999999;
+ 
+    padding: 2vw 1vw 3vw;
+    transition: all 5s ease-in-out;
+    width: 85vw;
+}
+.myMainButton .btn {
+width: 40vw;
+height: 39vw;
+font-size: 8vw;
+font-family: 'Unkempt', cursive;
+line-height: 8.85vw;
+border-radius: 50%;
+//border: 1.5px solid white;
+color: #FFF;
+white-space: pre;
+text-shadow: 1px 3px 1px rgba(98, 97, 97, 0.51);
+text-align: center;
+vertical-align:middle;
+transition: all 2s ease-in-out;
+padding: 1.5vw 1vw 0vw;
+margin: 5vw auto;
+    //font-weight:500;
+  }
+.myMainButton .ui-draggable-dragging {
+    color: transparent;
+    font-size: 0;
+    width: 15vw;
+    height: 15vw;
+    /* max-width: 24vw; */
+    /* min-height: 24vw; */
+  -webkit-transition: width 0.1s ease-in-out;
+  transition: width 0.1s ease-in-out;
+    padding: 0;
+    line-height: 0;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.hasEnergy {
+    box-shadow: 4px 4px 10px rgba(98, 97, 97, 0.09),0px 0px 55px #FFE302;
+
+    background: -moz-radial-gradient(center, ellipse cover,     #FFE202 0%,#FFE302 34%,#FFE206 38%,#FFE513 43%,#FFE415 45%,rgba(255,228,19,0.74) 53%,rgba(255,226,6,0.6) 60%,rgba(255,227,2,0.5) 65%,rgba(255,227,2,0.17) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#FFE202), color-stop(34%,#FFE302), color-stop(38%,#FFE206), color-stop(43%,#FFE513), color-stop(45%,#FFE415), color-stop(53%,rgba(255,228,19,0.74)), color-stop(60%,rgba(255,226,6,0.6)), color-stop(65%,rgba(255,227,2,0.5)), color-stop(100%,rgba(255,227,2,0.17))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #FFE202 0%,#FFE302 34%,#FFE206 38%,#FFE513 43%,#FFE415 45%,rgba(255,228,19,0.74) 53%,rgba(255,226,6,0.6) 60%,rgba(255,227,2,0.5) 65%,rgba(255,227,2,0.17) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,       #FFE202 0%,#FFE302 34%,#FFE206 38%,#FFE513 43%,#FFE415 45%,rgba(255,228,19,0.74) 53%,rgba(255,226,6,0.6) 60%,rgba(255,227,2,0.5) 65%,rgba(255,227,2,0.17) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,      #FFE202 0%,#FFE302 34%,#FFE206 38%,#FFE513 43%,#FFE415 45%,rgba(255,228,19,0.74) 53%,rgba(255,226,6,0.6) 60%,rgba(255,227,2,0.5) 65%,rgba(255,227,2,0.17) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,              #FFCC02 0%,#FFE302 34%,#FFE206 38%,#FFE513 43%,#FFE415 45%,rgba(255,228,19,0.74) 53%,rgba(255,226,6,0.6) 60%,rgba(255,227,2,0.5) 65%,rgba(255,227,2,0.17) 100%);    
+    -webkit-filter: none !important;  
+    -moz-filter: none !important;  
+    filter: none !important;
+}

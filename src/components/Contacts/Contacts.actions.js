@@ -1,4 +1,5 @@
 import {auth, database} from '../../store';
+import fetch from 'isomorphic-fetch';
 import Crypto from 'crypto';
 
 export const GET_CONTACTS_REQUESTED = 'GET_CONTACTS_REQUESTED';
@@ -115,6 +116,7 @@ function getContactsFulfilledAction(contacts) {
                 })
   return {
     type: GET_CONTACTS_FULFILLED,
-    contacts
+    contacts,
+    receivedAt: Date.now()
   };
 }
