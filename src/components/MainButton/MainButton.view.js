@@ -5,16 +5,16 @@ import cn from 'classnames'
 
 import css from './MainButton.scss'
 
-class ContactCard extends Component {
+class MainButton extends Component {
   constructor(props) {
     super(props)
   }
 
   render() {
-    const { id,contact } = this.props
+    // const { id,contact } = this.props
     return (
-    <div class="myMainButton center flex">
-        <div class="btn ui-draggable hasEnergy ui-widget-content">
+    <div class={`${css.myMainButton}`}>
+        <div class={`${css.btn} ${css.uiDraggable} ${css.hasEnergy}`}>
 Good 
 Energy</div>
     </div>
@@ -23,9 +23,9 @@ Energy</div>
   }
 }
 
-ContactCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  contact: PropTypes.object.isRequired
+MainButton.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   contact: PropTypes.object.isRequired
 }
 
-export default ContactCard
+export default MainButton

@@ -25,7 +25,7 @@ padding: 1.5vw 1vw 0vw;
 margin: 5vw auto;
     //font-weight:500;
   }
-.myMainButton .ui-draggable-dragging {
+.myMainButton .uiDraggable .Dragging {
     color: transparent;
     font-size: 0;
     width: 15vw;
@@ -40,7 +40,7 @@ margin: 5vw auto;
     text-align: center;
 }
 
-.hasEnergy {
+.myMainButton .hasEnergy {
     box-shadow: 4px 4px 10px rgba(98, 97, 97, 0.09),0px 0px 55px #FFE302;
 
     background: -moz-radial-gradient(center, ellipse cover,     #FFE202 0%,#FFE302 34%,#FFE206 38%,#FFE513 43%,#FFE415 45%,rgba(255,228,19,0.74) 53%,rgba(255,226,6,0.6) 60%,rgba(255,227,2,0.5) 65%,rgba(255,227,2,0.17) 100%); /* FF3.6+ */
