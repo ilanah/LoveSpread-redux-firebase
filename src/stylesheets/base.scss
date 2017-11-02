@@ -29,3 +29,9 @@ $transition:all 1s ease-out;
     color: #008FFF;
     background: hsl(206, 94%, 64%);
  }
+
+/* fix for semantic-ui */
+.ui.menu:not(.vertical) .right.item, 
+.ui.menu:not(.vertical) .right.menu {
+   margin-right: 1em;
+}

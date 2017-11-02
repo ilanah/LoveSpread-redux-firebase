@@ -10,7 +10,7 @@ import React, { Component, PropTypes } from 'react'
 import ContactsContainer from '../components/Contacts/Contacts.container';
 import UserMenu from '../components/UserMenu/UserMenu.view';
 import MainButton from '../components/MainButton/MainButton.view';
-import { Sidebar} from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 import Welcome from '../components/Welcome/Welcome.view';
 
 import css from './App.scss'
@@ -18,17 +18,18 @@ import css from './App.scss'
 export default class App extends Component {
 	constructor(props) {
 		super(props)
-/*
-	this.toggleMenu = () => {
-        // let togglestatus = !this.state.menuVisible;
-        this.setState({ menuVisible: !this.state.menuVisible })
-*/ 
+		  
+		this.state = { menuVisible: false };
+	}
+	toggleVisibility() {
+		this.setState({ menuVisible: !this.state.menuVisible });
 	}
 	getContent()
 	{
 
 	}
 	render() {
+		const { menuVisible } = this.state
 		// const { 
 		// 	contacts,
 		// 	current_user,
@@ -41,23 +42,35 @@ export default class App extends Component {
 				  
 				  <div className={`ui fixed text ${css.fixed} ${css.header}`} /*style={{zIndex: 2147483646}}*/>
 					<div className="ui large secondary  menu">
-						<a className="toc item">
+						<a className="toc item" onClick={() => this.toggleVisibility()}>
 						<i className="sidebar medium icon"></i>
 						</a>
 						<div className="right item">
-						<a className="ui icon "><i className="circular user link icon black"></i></a>
+						  <UserMenu isLoggedIn={this.props.isLoggedIn}/>
 						</div>
 					</div>
 				  </div>
 
-				  <UserMenu/>
-
-		          <Sidebar.Pushable style={{marginBottom: 2 + 'em'}}>
+		          <Sidebar.Pushable as={Segment} style={{marginBottom: 2 + 'em', marginTop: 3.5 + 'em'}}>
 
 		            {/*<LeftMenu contacts={contacts} services={{}} loggedIn={true} menuVisible={false}/>*/}
+		            <Sidebar as={Menu} width='thin' visible={menuVisible} icon='labeled' vertical inverted>
+			            <Menu.Item name='home'>
+			              <Icon name='home' />
+			              Home
+			            </Menu.Item>
+			            <Menu.Item name='gamepad'>
+			              <Icon name='gamepad' />
+			              Games
+			            </Menu.Item>
+			            <Menu.Item name='camera'>
+			              <Icon name='camera' />
+			              Channels
+			            </Menu.Item>
+			        </Sidebar>
 
 		            <Sidebar.Pusher style={{zIndex: 2147483647/*, border: '2px solid #ececec'*/}}>
-		                <div className="ui vertical segment center aligned" style={{marginTop: 3.5 + 'em'}}>
+		                <div className="ui vertical segment center aligned">
 						{
 							this.props.isLoggedIn ?
 								<div id="main" class="flex column  center" >

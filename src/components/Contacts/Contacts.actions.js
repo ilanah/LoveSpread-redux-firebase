@@ -1,6 +1,7 @@
 import {auth, database} from '../../store';
 import fetch from 'isomorphic-fetch';
-import Crypto from 'crypto';
+// import Crypto from 'crypto';
+const crypto = require('crypto');
 
 export const GET_CONTACTS_REQUESTED = 'GET_CONTACTS_REQUESTED';
 export const GET_CONTACTS_REJECTED = 'GET_CONTACTS_REJECTED';
@@ -65,7 +66,7 @@ function getContactsFulfilledAction(contacts) {
                       {
                         Object.keys(email).map((key, id) => (
                             email[key].value?
-                              md5Email = Crypto.createHash("md5").update(email[key].value.trim().toLowerCase()).digest("hex"):md5Email
+                              md5Email = crypto.createHash("md5").update(email[key].value.trim().toLowerCase()).digest("hex"):md5Email
                         ))
                       }
 
